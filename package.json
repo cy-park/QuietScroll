@@ -1,0 +1,24 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "",
+  "main": "src/QuietScroll.js",
+  "scripts": {
+    "server": "http-server .",
+    "watch": "watch 'npm run dist' src",
+    "dist": "mkdir -p dist && uglifyjs src/QuietScroll.js -o dist/QuietScroll.min.js --mangle",
+    "inst": "npm install uglify-js http-server --save-dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cy-park/QuietScroll.git"
+  },
+  "keywords": [],
+  "author": "Chan Young Park <designbycy@gmail.com> (http://www.chanyoungpark.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cy-park/QuietScroll/issues"
+  },
+  "homepage": "https://github.com/cy-park/QuietScroll#readme"
+}
