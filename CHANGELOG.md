@@ -1,7 +1,17 @@
 CHANGELOG
 =========
 
-## 0.1.2 (unreleased)
+## 0.2.1 (unreleased)
+
+## 0.2.0 (2017-03-16, beta release)
+
+#### features:
+ - Changed parameters to QuietWheel(condition, callbackQWE, callbackOWE)
+		condition   -- if true callbackQWE runs. if false callbackOWE runs.
+		callbackQWE -- callback for QuietWheelEvents
+		callbackOWE -- callback for OriginalWheelEvents
+
+ - WARNING: broken backward compatibility
 
 ## 0.1.1 (2017-03-02, beta release)
 
