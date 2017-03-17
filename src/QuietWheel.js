@@ -4,12 +4,9 @@
 
 'use strict';
 
+var QuietWheel = function(callback, callbackArgs, enableScrollEvents){
 
-
-// condition -- if true callbackQWE runs. if false callbackOWE runs.
-// callbackQWE -- callback for QuietWheelEvents
-// callbackOWE -- callback for OriginalWheelEvents
-var QuietWheel = function(condition, callbackQWE, callbackOWE){
+	enableScrollEvents = enableScrollEvents || false;
 
 	var qweUnits = [];
 	var isWheelFired = false;
@@ -24,7 +21,13 @@ var QuietWheel = function(condition, callbackQWE, callbackOWE){
 		return Math.ceil(sum/range);
 	};
 
-	var onQuietWheel = function(e){
+	var onWheel = function(e){
+
+		if (typeof enableScrollEvents === 'function') {
+			if (!enableScrollEvents()) e.preventDefault();
+		} else {
+			if (!enableScrollEvents) e.preventDefault();
+		}
 
 		var curTime = new Date().getTime();
 		var qweUnit = new QWEventUnit(e);
@@ -49,86 +52,15 @@ var QuietWheel = function(condition, callbackQWE, callbackOWE){
 		if (isAccelerating && qweUnit.isVerticalScroll){
 			if (!isWheelFired) {
 				isWheelFired = true;
-				callbackQWE(qweUnit);
+				callback.apply(null, [qweUnit].concat(callbackArgs));
 			} 
 		} else {
 			isWheelFired = false;
 		}
 	};
 
-	var onWheel = function(e){callbackOWE(e)};
-
-	var condition_processed = null;
-	var callback_processed = function(e){
-		if (typeof condition === 'function')
-			condition_processed = condition();
-		else
-			condition_processed = condition;
-		condition_processed ? onQuietWheel(e) : onWheel(e);
-	};
-
-	window.addEventListener('wheel', callback_processed);
+	window.addEventListener('wheel', onWheel);
 };
-
-
-
-// var QuietWheel = function(callback, callbackArgs, enableScrollEvents){
-
-// 	enableScrollEvents = enableScrollEvents || false;
-
-// 	var qweUnits = [];
-// 	var isWheelFired = false;
-// 	var prevTime = new Date().getTime();
-
-// 	function onWheel(e){
-
-// 		if (typeof enableScrollEvents === 'function') {
-// 			if (!enableScrollEvents()) e.preventDefault();
-// 		} else {
-// 			if (!enableScrollEvents) e.preventDefault();
-// 		}
-
-// 		var curTime = new Date().getTime();
-// 		var qweUnit = new QWEventUnit(e);
-
-// 		if(qweUnits.length > 149){
-// 			qweUnits.shift();
-// 		}
-// 		qweUnits.push(qweUnit);
-
-// 		var timeDiff = curTime-prevTime;
-// 		prevTime = curTime;
-
-// 		if(timeDiff > 200){
-// 			qweUnits = [];
-// 			isWheelFired = false;
-// 		}
-
-// 		var averageEnd = getAverageScala(qweUnits, 10);
-// 		var averageMiddle = getAverageScala(qweUnits, 70);
-// 		var isAccelerating = averageEnd >= averageMiddle;
-
-// 		if (isAccelerating && qweUnit.isVerticalScroll){
-// 			if (!isWheelFired) {
-// 				isWheelFired = true;
-// 				callback.apply(null, [qweUnit].concat(callbackArgs));
-// 			} 
-// 		} else {
-// 			isWheelFired = false;
-// 		}
-// 	}
-
-// 	function getAverageScala(qweUnits, range){
-// 		var sum = 0;
-// 		var arr_slice = qweUnits.slice(Math.max(qweUnits.length - range, 1));
-// 		for(var i = 0; i < arr_slice.length; i++){
-// 			sum += arr_slice[i].scala;
-// 		}
-// 		return Math.ceil(sum/range);
-// 	}
-
-// 	window.addEventListener('wheel', onWheel);
-// };
 
 function QWEventUnit(e){
 

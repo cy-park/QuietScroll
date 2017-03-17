@@ -1,6 +1,6 @@
 {
   "name": "quietwheel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A plugin to silence multiple mouse wheel events when users wheel just once.",
   "main": "src/QuietWheel.js",
   "scripts": {
@@ -23,6 +23,6 @@
   "homepage": "https://github.com/cy-park/QuietWheel#readme",
   "devDependencies": {
     "http-server": "^0.9.0",
-    "uglify-js": "^2.8.4"
+    "uglify-js": "^2.8.13"
   }
 }

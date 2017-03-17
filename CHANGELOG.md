@@ -1,7 +1,13 @@
 CHANGELOG
 =========
 
-## 0.2.1 (unreleased)
+## 0.2.2 (unreleased)
+
+## 0.2.1 (2017-03-16, beta release)
+
+#### updates:
+ - reverted back to v0.1.1 in terms of functionality
+ - updated function declaration parts to run in strict mode without error in Safari
 
 ## 0.2.0 (2017-03-16, beta release)
 
