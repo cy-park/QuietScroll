@@ -53,7 +53,7 @@ var QuietWheel = function(callback, callbackArgs, enableScrollEvents){
 			if (!isWheelFired) {
 				isWheelFired = true;
 				callback.apply(null, [qweUnit].concat(callbackArgs));
-			} 
+			}
 		} else {
 			isWheelFired = false;
 		}
@@ -75,7 +75,7 @@ function QWEventUnit(e){
 	self.isVerticalScroll = Math.abs(e.deltaY) > Math.abs(e.deltaX);
 }
 
-if (typeof define === 'function' && define.amd) define(QuietWheel);
-else if (typeof module === 'object' && module.exports) module.exports = QuietWheel;
+if (typeof module === 'object' && module.exports) module.exports = QuietWheel;
+else if (typeof define === 'function' && define.amd) define(QuietWheel);
 else this.QuietWheel = QuietWheel;
 }).call(this);

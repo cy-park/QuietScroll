@@ -8,15 +8,10 @@
 		body {height:10000px;}
 	</style>
 	<script>
-
 		window.onload = function(){
-			QuietWheel(function(){
-				return Math.abs(document.body.getBoundingClientRect().top) % 2 === 0 ? true : false;
-			}, function(e){
-				console.log('trueeeeee', Math.abs(document.body.getBoundingClientRect().top) % 2, document.body.getBoundingClientRect().top );
-			}, function(e){
-				console.log('falseeeee', Math.abs(document.body.getBoundingClientRect().top) % 2, document.body.getBoundingClientRect().top );
-			});
+			QuietWheel(function(arg1, arg2){
+				console.log(this, arg1, arg2);
+			}, ['test', 'test2'], true);
 		};
 	</script>
 </head>

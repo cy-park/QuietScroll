@@ -1,7 +1,12 @@
 CHANGELOG
 =========
 
-## 0.2.2 (unreleased)
+## 0.2.3 (unreleased)
+
+## 0.2.2 (2017-09-06, beta release)
+
+#### fixes:
+ - fixed issue while importing in ES6 environment
 
 ## 0.2.1 (2017-03-16, beta release)
 
