@@ -1,7 +1,12 @@
 CHANGELOG
 =========
 
-## 0.2.3 (unreleased)
+## 0.2.4 (unreleased)
+
+## 0.2.3 (2018-05-16, beta release)
+
+#### updates:
+ - added cooldown time between QWEvents to prevent multiple events firing continuously by finger-dragging gesture on touchpad.
 
 ## 0.2.2 (2017-09-06, beta release)
 

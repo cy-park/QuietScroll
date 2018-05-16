@@ -10,6 +10,9 @@ var QuietWheel = function(callback, callbackArgs, enableScrollEvents){
 
 	var qweUnits = [];
 	var isWheelFired = false;
+	// `isCoolingDown` is added to prevent
+	// continuous dragging behaviour evoking multiple wheel events.
+	var isCoolingDown = false;
 	var prevTime = new Date().getTime();
 
 	var getAverageScala = function(qweUnits, range){
@@ -52,7 +55,11 @@ var QuietWheel = function(callback, callbackArgs, enableScrollEvents){
 		if (isAccelerating && qweUnit.isVerticalScroll){
 			if (!isWheelFired) {
 				isWheelFired = true;
-				callback.apply(null, [qweUnit].concat(callbackArgs));
+				if (!isCoolingDown) {
+					isCoolingDown = true;
+					callback.apply(null, [qweUnit].concat(callbackArgs));
+					setTimeout(function(){isCoolingDown=false}, 400);
+				}
 			}
 		} else {
 			isWheelFired = false;

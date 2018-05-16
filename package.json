@@ -1,6 +1,6 @@
 {
   "name": "quietwheel",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A plugin to silence multiple mouse wheel events when users wheel just once.",
   "main": "src/QuietWheel.js",
   "scripts": {
